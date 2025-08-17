@@ -1,0 +1,360 @@
+{
+	"error": {
+		"text": "Hata",
+		"onCooldown": "Lütfen {{{time}}} tekrar bekleyin.",
+		"noAccess": {
+			"admin": "Bu komutu kullanma yetkin yok",
+			"dm": "Bu komutu özel mesajlarda kullanma iznin yok",
+			"button": "Bu etkileşimi kullanamazsın."
+		}
+	},
+	"success": {
+		"text": "Başarılı"
+	},
+	"rules": {
+		"title": "Arox | Kurallar",
+		"description": "1. Botta bulunan herhangi bir ürünün ticaretini yapmak yasaktır.\n2. Botta bulunan hataları geliştiricilere bildirmeyip, kendi yararınıza kullanmanız yasaktır.\n3. Otomatik olarak botta gelişmenizi sağlayacak yazılım dosyaları kullanmanız yasaktır.\n4. Botta elde ettiğiniz verilerin, geleceğe dair hiçbir garantisi bulunmamaktadır. Botun amacı ve işleyiş şekli herhangi bir zamanda değiştirilebilir.\n\n⚠️ Burada yazılı olan kuralların ihlal edilmesi sonucunda sınırsız karaliste veya gerekli cezalandırmalar ile karşılaşabilirsiniz!\n\n- Herhangi bir sorununuz var ise [destek sunucumuza](https://discord.gg/9b6yZ5Z) katılabilirsiniz!",
+		"footer": "Komutları kullanabilmek için kuralları kabul etmeniz gerekmektedir.",
+		"button": "Kabul Et",
+		"buttonAccepted": "Kabul edildi!",
+		"accepted": "Kuralları başarıyla kabul ettin! Artık komutları kullanabilirsin."
+	},
+	"embeds": {
+		"author": "© {{ year }} {{ botname }} Tüm haklar saklıdır.",
+		"author_user": "Sorgulayan: {{{user}}}"
+	},
+	"commands": {
+		"status": {
+			"description": "Botun istatistik panelini gösterir.",
+			"name": "istatistik",
+			"aliases": "commands.status.aliases",
+			"messages": {
+				"title": "Arox | Bot Bilgileri",
+				"developers": "Bot Geliştiricileri",
+				"bot_info": "Bot Bilgileri",
+				"uptime": "Çalışma Süresi",
+				"servers": "Sunucu Sayısı",
+				"users": "Kullanıcı Sayısı",
+				"channels": "Kanal Sayısı",
+				"memory": "Bellek Kullanımı",
+				"cpu": "CPU Kullanımı",
+				"latency": "Gecikme Bilgileri",
+				"bot_latency": "Bot Gecikmesi",
+				"message_latency": "Mesaj Gecikmesi",
+				"db_latency": "Veri Tabanı Gecikmesi",
+				"links": "Bot Bağlantıları",
+				"support": "Destek Sunucusu",
+				"invite": "Davet Et",
+				"vote": "Oy Ver",
+				"website": "Website"
+			}
+		},
+		"balance": {
+			"name": "bakiye",
+			"description": "Mevcut bakiyenizi gösterir.",
+			"messages": {
+				"success": {
+					"author": "{{{user}}} | Bakiye Bilgileri",
+					"wallet": "Cüzdan",
+					"bank": "Banka",
+					"total": "Toplam"
+				},
+				"history": {
+					"author": "{{{user}}} | İşlem Geçmişi"
+				},
+				"error": {
+					"noTransactions": "Hiç işlem geçmişin bulunmuyor."
+				}
+			},
+			"components": {
+				"select": {
+					"placeholder": "Görüntüleme Seçeneği",
+					"balance": {
+						"label": "Bakiye"
+					},
+					"history": {
+						"label": "İşlem Geçmişi"
+					}
+				}
+			},
+			"transaction_types": {
+				"deposit": "Para Yatırma",
+				"withdraw": "Para Çekme",
+				"deposit_all": "Tümünü Yatırma",
+				"withdraw_all": "Tümünü Çekme"
+			}
+		},
+		"ping": {
+			"name": "gecikme",
+			"description": "Botun gecikme bilgilerini gösterir.",
+			"messages": {
+				"title": "Gecikme Bilgileri",
+				"bot_latency": "Bot Gecikmesi",
+				"message_latency": "Mesaj Gecikmesi",
+				"db_latency": "Veri Tabanı Gecikmesi",
+				"pinging": "commands.ping.messages.pinging"
+			}
+		},
+		"invite": {
+			"name": "davet",
+			"description": "Botun davet linkini gönderir.",
+			"messages": {
+				"title": "Beni Davet Et!",
+				"description": "Selam, **{{{user}}}**! Beni sunucuna davet etmek için aşağıdaki butona tıklayabilirsin!",
+				"button": "Arox'u Ekle"
+			}
+		},
+		"language": {
+			"name": "dil",
+			"description": "Botun dilini değiştirir.",
+			"messages": {
+				"title": "Dil Sistemi",
+				"description": "Botun dilini alttaki menüyü kullanarak değiştirebilirsiniz!",
+				"current_language": "Şu anki diliniz:"
+			},
+			"components": {
+				"select": {
+					"placeholder": "Bir dil seç"
+				}
+			}
+		},
+		"calculate": {
+			"name": "hesapla",
+			"description": "Matematiksel bir işlem yapar.",
+			"options": {
+				"expression": {
+					"name": "işlem",
+					"description": "Hesaplanacak işlem."
+				}
+			},
+			"messages": {
+				"title": "Hesap Makinesi",
+				"success": "{{{user}}}, işleminin sonucu: **{{{result}}}**",
+				"error": "Geçersiz bir matematiksel ifade girdiniz."
+			}
+		},
+		"bank": {
+			"name": "banka",
+			"description": "Banka hesabınızı yönetin.",
+			"messages": {
+				"success": {
+					"author": "{{{user}}} | Banka Bilgileri",
+					"bank": "Banka",
+					"footer": "Aşağıdaki menü ve butonlar yardımıyla bankanı yönetebilirsin!",
+					"depositAll": "Tüm paran olan **{{{amount}}}** 💵 bankaya yatırıldı.",
+					"withdrawAll": "Bankadaki tüm paran olan **{{{amount}}}** 💵 cüzdanına çekildi.",
+					"deposit": "**{{{amount}}}** 💵 tutarında para bankaya yatırıldı.",
+					"withdraw": "**{{{amount}}}** 💵 tutarında para bankadan çekildi."
+				},
+				"error": {
+					"noCash": "Yatırmak için hiç nakitin yok.",
+					"noBank": "Çekmek için bankada hiç paran yok.",
+					"invalidAmount": "Lütfen geçerli bir miktar girin.",
+					"notEnoughCash": "Cüzdanında yeterli para yok. Cüzdanındaki para: **{{{amount}}}** 💵",
+					"notEnoughBank": "Bankanda yeterli para yok. Bankandaki para: **{{{amount}}}** 💵"
+				}
+			},
+			"components": {
+				"select": {
+					"placeholder": "Banka İşlemleri",
+					"deposit": {
+						"label": "Para Yatır",
+						"description": "Bankaya para yatır."
+					},
+					"withdraw": {
+						"label": "Para Çek",
+						"description": "Bankadan para çek."
+					}
+				},
+				"buttons": {
+					"depositAll": "Tüm Paranı Yatır",
+					"withdrawAll": "Tüm Paranı Çek"
+				}
+			},
+			"modals": {
+				"deposit": {
+					"title": "Para Yatır",
+					"label": "Yatırmak istediğiniz miktar"
+				},
+				"withdraw": {
+					"title": "Para Çek",
+					"label": "Çekmek istediğiniz miktar"
+				}
+			}
+		},
+		"pray": {
+			"name": "şans",
+			"description": "Kendine şans dile ve yonca puanı kazan.",
+			"messages": {
+				"success": "[[pray]] | Başarıyla kendine şans diledin!\nArtık [[clover]] **{{{clover}}}** Yonca Puanı'na sahipsin!"
+			}
+		},
+		"leaderboard": {
+			"name": "sıralama",
+			"description": "Sunucudaki en zengin kullanıcıları gösterir.",
+			"messages": {
+				"title": "Arox | Arox Cash — Sıralama İstatistikleri",
+				"user_info": "👤 Senin Bilgilerin:",
+				"user_balance": "**Miktar:**",
+				"user_rank": "**Sıralama:**",
+				"global_leaderboard": "🏆 Global Sıralama Tablosu:",
+				"no_one_in_leaderboard": "Sıralamada kimse yok.",
+				"footer": "Sorgulayan: {{{user}}} • Sayfa {{{page}}}/{{{totalPages}}}"
+			}
+		},
+		"coinflip": {
+			"name": "yazıtura",
+			"description": "Yazı tura oynayarak para kazanın veya kaybedin.",
+			"options": {
+				"amount": {
+					"name": "miktar",
+					"description": "Yatırmak istediğiniz miktar."
+				},
+				"choice": {
+					"name": "seçim",
+					"description": "Yazı mı tura mı?",
+					"choices": {
+						"heads": "Yazı",
+						"tails": "Tura"
+					}
+				}
+			},
+			"components": {
+				"buttons": {
+					"select": "Seç"
+				}
+			},
+			"messages": {
+				"bet": "{{{emoji}}} | **{{{name}}}**, Yazı Tura oyununa [[cash]] **{{{amount}}}** yatırdın",
+				"select": "Lütfen aşağıdan seçimini yap!",
+				"selected": "ve **{{{choice}}}yı** seçtin!",
+				"spin": "Para dönüyor...",
+				"result": "Sonuç **{{{result}}}** geldi ve",
+				"win": "[[cash]] **{{{amount}}}** kazandın!",
+				"lose": "**kaybettin...**",
+				"timeout": "commands.coinflip.messages.timeout"
+			}
+		},
+		"roulette": {
+			"name": "rulet",
+			"description": "Rulet oynayarak para kazanın veya kaybedin.",
+			"options": {
+				"amount": {
+					"name": "miktar",
+					"description": "Yatırmak istediğiniz miktar."
+				},
+				"choice": {
+					"name": "seçim",
+					"description": "Renklerden birini seçin.",
+					"choices": {
+						"yellow": "Sarı",
+						"green": "Yeşil",
+						"purple": "Mor",
+						"blue": "Mavi",
+						"red": "Kırmızı",
+						"orange": "Turuncu"
+					}
+				}
+			},
+			"messages": {
+				"bet": "{{{emoji}}} | **{{{name}}}**, Rulet oyununa [[cash]] **{{{amount}}}** yatırdın",
+				"select": "Lütfen aşağıdan bir renk seç!",
+				"selected": "ve **{{{choice}}}** rengini seçtin!",
+				"result": "Sonuç **{{{result}}}** geldi ve",
+				"win": "[[cash]] **{{{amount}}}** kazandın!",
+				"lose": "**kaybettin...**",
+				"spin": "Rulet dönüyor...",
+				"timeout_refund": "Süre dolduğu için bahsin iade edildi."
+			}
+		},
+		"daily": {
+			"name": "günlük",
+			"description": "Günlük ödülünüzü alın.",
+			"messages": {
+				"success": {
+					"author": "{{user}} | Günlük Ödül",
+					"description": "[[cash]] **{{amount}}** kazandın! Yarın tekrar gel."
+				}
+			}
+		},
+		"transfer": {
+			"name": "transfer",
+			"description": "Başka bir kullanıcıya para gönderin.",
+			"options": {
+				"user": {
+					"name": "kullanıcı",
+					"description": "Para gönderilecek kullanıcı."
+				},
+				"amount": {
+					"name": "miktar",
+					"description": "Gönderilecek para miktarı."
+				}
+			},
+			"components": {
+				"buttons": {
+					"approve": "Onayla",
+					"decline": "Reddet"
+				}
+			},
+			"messages": {
+				"success": "[[pay]] | {{{sender}}}, {{{recipient}}} kullanıcısına [[cash]] **{{{amount}}}** gönderdi!",
+				"cancelled": "Transfer işlemi iptal edildi.",
+				"timeout": "Transfer işlemi zaman aşımına uğradı.",
+				"confirmation": {
+					"author": "{{{user}}} adlı kullanıcıya Arox Cash göndermek üzeresin!",
+					"description": "[[pay]] | {{{sender}}}, {{{recipient}}} adlı kullanıcıya [[cash]] **{{{amount}}}** göndermeyi onaylıyor musun?",
+					"approve_instruction": "Transferi onaylamak için **Onayla** butonuna tıklayın.",
+					"decline_instruction": "Transferi reddetmek için **Reddet** butonuna tıklayın.",
+					"warning_title": "ÖNEMLİ NOT",
+					"warning_body": "Bu transferi, gerçek hayatta parasal bir değeri olan herhangi bir şeyle takas yaptığın tespit edilirse bottan sınırsız karalisteye alınırsın!",
+					"footer": "Gönderen: {{{user}}}"
+				},
+				"error": {
+					"self_transfer": "Kendine para gönderemezsin.",
+					"bot_transfer": "Botlara para gönderemezsin.",
+					"not_enough_money": "Yeterli paran yok.",
+					"not_enough_money_after_confirm": "Onay sürecinde yeterli paran kalmadığı için işlem iptal edildi."
+				}
+			}
+		},
+		"exchange": {
+			"name": "exchange",
+			"description": "Coin borsası ile alım satım yapın.",
+			"messages": {
+				"title": "Arox | Güncel Borsa Fiyatları",
+				"description": "Borsa güncellendiğinde anında haberdar olmak için destek sunucumuza gelebilirsin!",
+				"select_coins": "Coin seçin",
+				"coin_details": "Bu coin ile alakalı verilere aşağıdan göz atabilirsin. Bu veriler rastgele sürelerle değişiklik gösterebilir.",
+				"buy_coin": "Coin Al",
+				"sell_coin": "Coin Sat",
+				"amount_modal_title": "Miktar",
+				"buy_amount_label": "Satın almak istediğiniz coin miktarını girin.",
+				"sell_amount_label": "Satmak istediğiniz coin miktarını girin.",
+				"percentage": "Yüzde",
+				"current_price": "Güncel Fiyat",
+				"previous_price": "Önceki Fiyat",
+				"launch_cost": "Başlangıç Fiyatı",
+				"highest_value": "En Yüksek Değer",
+				"lowest_value": "En Düşük Değer",
+				"error": {
+					"invalid_option": "Geçersiz seçenek!",
+					"max_limit": "100'den fazla coin alamaz veya satamazsın!",
+					"not_enough_cash": "**{{{amount}}}** adet {{{coinEmoji}}} **{{{coinName}}}** satın alabilmek için yeterli miktarda [[cash]] **Arox Coin**'iniz bulunmuyor!",
+					"not_enough_coins": "Bu coinden satabilmek için üzerinizde yeteri kadar bu coinden bulunmuyor!",
+					"no_coins": "Henüz hiç coin eklenmemiş!"
+				},
+				"success": {
+					"buy": "{{{coinEmoji}}} **| {{{user}}}**, Başarıyla {{{cost}}} [[cash]] karşılığında **{{{amount}}}** adet {{{coinEmoji}}} **{{{coinName}}}** satın aldın!",
+					"sell": "{{{coinEmoji}}} **| {{{user}}}**, Başarıyla {{{amount}}} adet {{{coinEmoji}}} **{{{coinName}}}** coinini [[cash]] **{{{cost}}}** karşılığında sattınız!"
+				}
+			}
+		},
+		"setcash": {
+			"messages": {
+				"author": "commands.setcash.messages.author",
+				"set": "commands.setcash.messages.set",
+				"change": "commands.setcash.messages.change"
+			}
+		}
+	}
+}

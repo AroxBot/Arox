@@ -1,0 +1,13 @@
+import { ApplicationCommandType } from "discord.js";
+import ms from "ms";
+
+import { Handler } from "@/structures/core/Handler";
+export default Handler.ContextMenuHandler({
+  data(builder, _options) {
+    return builder.setName("test").setType(ApplicationCommandType.User);
+  },
+  cooldown: (manager) => manager.saveDatabase(false).setCooldownTime(ms("10s")).setEnabled(true),
+  async execute(_options, interaction) {
+    await interaction.editReply({ content: "helo" });
+  }
+});
