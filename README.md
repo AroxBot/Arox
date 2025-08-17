@@ -18,7 +18,7 @@ SHARD_COUNT=auto
 
 ## License
 
-Discord Partner Bot is licensed under the terms of [MIT License](https://github.com/AroxBot/arox/blob/master/LICENSE).
+Discord Partner Bot is licensed under the terms of [MIT License](https://github.com/AroxBot/arox/blob/main/LICENSE).
 
 ## Contributing
 
