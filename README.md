@@ -18,7 +18,11 @@ SHARD_COUNT=auto
 
 ## License
 
+<<<<<<< HEAD
 **Arox** is licensed under the terms of [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](https://github.com/AroxBot/arox/blob/master/LICENSE).
+=======
+Discord Partner Bot is licensed under the terms of [MIT License](https://github.com/AroxBot/arox/blob/main/LICENSE).
+>>>>>>> 3118c9bdbe7c4bfa638736a39f5a09769f03f30a
 
 ## Contributing
 
