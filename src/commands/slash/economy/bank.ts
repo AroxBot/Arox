@@ -10,7 +10,7 @@ import {
     MessageFlags,
 } from "discord.js";
 import ms from "ms";
-
+import settings from "@/config/Bot";
 import UserModel from "@/models/User";
 import { Handler } from "@/structures/core/Handler";
 import { CustomEmbed } from "@/structures/classes/CustomEmbed";
@@ -141,7 +141,7 @@ export default Handler.SlashCommandHandler({
 
                     if (submitted.customId.startsWith("deposit")) {
                         if (user.cash < amount) {
-                            return await throwError(submitted, options, options._t("commands.bank.messages.error.notEnoughCash", { amount: user.cash.toLocaleString() }));
+                            return await throwError(submitted, options, options._t("commands.bank.messages.error.notEnoughCash", { currency: settings.currency }));
                         }
                         user.cash -= amount;
                         user.bank += amount;
@@ -151,7 +151,7 @@ export default Handler.SlashCommandHandler({
                         await submitted.reply({ embeds: [embed], flags: MessageFlags.Ephemeral });
                     } else if (submitted.customId.startsWith("withdraw")) {
                         if (user.bank < amount) {
-                            return await throwError(submitted, options, options._t("commands.bank.messages.error.notEnoughBank", { amount: user.bank.toLocaleString() }));
+                            return await throwError(submitted, options, options._t("commands.bank.messages.error.notEnoughBank", { currency: settings.currency }));
                         }
                         user.bank -= amount;
                         user.cash += amount;

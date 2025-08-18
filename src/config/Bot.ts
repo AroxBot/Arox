@@ -21,6 +21,7 @@ export default {
     support: "https://discord.gg/9b6yZ5Z",
     invite: "https://discord.com/oauth2/authorize?client_id=YOUR_CLIENT_ID&scope=bot&permissions=8",
     vote: "https://top.gg/bot/YOUR_CLIENT_ID/vote",
-    website: "https://arox.xyz"
-  }
+    website: "https://aroxbot.xyz"
+  },
+  currency: "AX"
 } as unknown as BotSettings;

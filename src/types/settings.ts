@@ -19,6 +19,7 @@ export type BotSettings = {
     vote: string;
     website: string;
   };
+  currency: string;
 };
 export type Paths = {
   eventsPath: string;
