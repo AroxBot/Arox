@@ -7,7 +7,7 @@ export class DatabaseHandler {
   constructor(
     private _bot: Client,
     private botConfig: BotSettings
-  ) { }
+  ) {}
 
   async connect() {
     if (!process.env.MONGO_URI) {

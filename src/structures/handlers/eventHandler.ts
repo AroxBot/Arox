@@ -5,7 +5,7 @@ import Paths from "@/config/Paths";
 import { createFolder, isFolder, loadArray } from "@/utils/file";
 import { EventHandlerOptions } from "@/types/options/eventHandler";
 export class EventHandler {
-  constructor(private bot: Client) { }
+  constructor(private bot: Client) {}
   async reloadEvents() {
     this.bot.client.removeAllListeners();
     if (!isFolder(Paths.eventsPath)) return createFolder(Paths.eventsPath);

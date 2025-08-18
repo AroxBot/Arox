@@ -1,7 +1,8 @@
 import chalk from "chalk";
-import { CommandInteraction, Events, Message, MessageFlags } from "discord.js";
+import { Events, MessageFlags } from "discord.js";
+
 import { Handler } from "@/structures/core/Handler";
-import { formatTimesamp, throwError } from "@/utils/discord";
+import { throwError } from "@/utils/discord";
 import { checkRules, handleRulesAccept } from "@/utils/rulesHelper";
 
 export default Handler.EventHandler({
@@ -25,15 +26,13 @@ export default Handler.EventHandler({
       locale,
       _e: options.bot.emojiHandler._e.bind(options.bot.emojiHandler),
       _c: options.bot.emojiHandler._c.bind(options.bot.emojiHandler),
-      _t: options.bot.localeHandler._t.bind(options.bot.localeHandler, locale),
+      _t: options.bot.localeHandler._t.bind(options.bot.localeHandler, locale)
     };
 
     // Get the command first to check if it exists
     const command = interaction.isChatInputCommand()
       ? options.bot.commandHandler.slashCommand.get(interaction.commandName)
-      : options.bot.commandHandler.contextMenu.find(
-        (cmd) => cmd.data.name === interaction.commandName && cmd.data.type === interaction.commandType
-      );
+      : options.bot.commandHandler.contextMenu.find((cmd) => cmd.data.name === interaction.commandName && cmd.data.type === interaction.commandType);
 
     if (!command) {
       console.error(chalk.redBright(`'${interaction.commandName}' (${interaction.commandId}) was not found.`));
@@ -82,7 +81,10 @@ export default Handler.EventHandler({
             timeText = `${seconds}s`;
           }
 
-          return await throwError(interaction, opts, `⏰ You must wait **${timeText}** before using this command again!`, { emoji: "loading", ephemeral: true });
+          return await throwError(interaction, opts, `⏰ You must wait **${timeText}** before using this command again!`, {
+            emoji: "loading",
+            ephemeral: true
+          });
         }
       } catch (cooldownError) {
         console.error(`Error checking cooldown for command '${interaction.commandName}':`, cooldownError);
@@ -122,5 +124,5 @@ export default Handler.EventHandler({
         console.error(`Failed to send error message for command '${interaction.commandName}':`, followUpError);
       }
     }
-  },
+  }
 });

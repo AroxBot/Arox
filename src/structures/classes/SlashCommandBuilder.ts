@@ -51,7 +51,7 @@ export class CustomSlashBuilder extends SlashCommandBuilder {
       default_member_permissions: this.default_member_permissions,
       nsfw: this.nsfw,
       allowDM,
-      adminOnly,
+      adminOnly
     };
   }
 }

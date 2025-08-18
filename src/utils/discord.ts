@@ -1,4 +1,5 @@
 import { Interaction, Message, User, MessageFlags } from "discord.js";
+
 import { DefaultCommandOptions } from "@/types/options/command";
 import { CommandData } from "@/types/data/command";
 
@@ -47,13 +48,13 @@ export async function throwError(
   const user = getUser(interactionOrMessage);
 
   const messagePayload: any = {
-    content: `${options._e(emoji as any)} **| ${user.displayName}**, ${content}`,
+    content: `${options._e(emoji as any)} **| ${user.displayName}**, ${content}`
   };
 
   if (interactionOrMessage instanceof Message) {
     const sentMessage = await interactionOrMessage.reply(messagePayload);
     if (deleteIn) {
-      setTimeout(() => sentMessage.delete().catch(() => { }), deleteIn);
+      setTimeout(() => sentMessage.delete().catch(() => {}), deleteIn);
     }
     return;
   }
@@ -75,10 +76,9 @@ export async function throwError(
     sentMessage = await interactionOrMessage.followUp(messagePayload);
   }
 
-
   if (deleteIn && sentMessage instanceof Message) {
     setTimeout(() => {
-      sentMessage.delete().catch(() => { }); // Ignore errors
+      sentMessage.delete().catch(() => {}); // Ignore errors
     }, deleteIn);
   }
 }

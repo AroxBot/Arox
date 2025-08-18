@@ -25,7 +25,7 @@ export default Handler.EventHandler({
       return;
     }
 
-      let [cmd, ...args] = message.content
+    let [cmd, ...args] = message.content
       .slice(usedPrefix.length)
       .trim()
       .split(" ")

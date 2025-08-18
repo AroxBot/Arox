@@ -2,8 +2,6 @@ import { GatewayIntentBits, Partials } from "discord.js";
 
 import { BotSettings } from "@/types/settings";
 
-import Paths from "./Paths";
-
 export default {
   name: "Arox",
   prefix: ["a!", "!"],

@@ -1,10 +1,11 @@
 {
 	"error": {
+		"notEnoughMoney": "Bu işlemi gerçekleştirebilmek için cüzdanında yeterli [[cash]] **{{{currency}}}** yok!",
 		"text": "Hata",
 		"onCooldown": "Lütfen {{{time}}} tekrar bekleyin.",
 		"noAccess": {
 			"admin": "Bu komutu kullanma yetkin yok",
-			"dm": "Bu komutu özel mesajlarda kullanma iznin yok",
+			"dm": "Bu komutu özel mesajlarda kullanma iznin yok!",
 			"button": "Bu etkileşimi kullanamazsın."
 		}
 	},

@@ -6,7 +6,7 @@ export enum CooldownType {
   USER = "user",
   GUILD = "guild",
   CHANNEL = "channel",
-  GLOBAL = "global",
+  GLOBAL = "global"
 }
 
 export interface CooldownOptions {
@@ -31,9 +31,12 @@ export class CooldownHandler {
    */
   private startDatabaseCleanup(): void {
     // Clean up database every 30 minutes
-    this.databaseCleanupInterval = setInterval(() => {
-      this.removeInvalidCooldowns();
-    }, 30 * 60 * 1000);
+    this.databaseCleanupInterval = setInterval(
+      () => {
+        this.removeInvalidCooldowns();
+      },
+      30 * 60 * 1000
+    );
 
     // Run initial cleanup
     this.removeInvalidCooldowns();
@@ -49,12 +52,7 @@ export class CooldownHandler {
   /**
    * Get target ID based on cooldown type
    */
-  private getTargetId(
-    type: CooldownType,
-    userId?: string,
-    guildId?: string,
-    channelId?: string
-  ): string {
+  private getTargetId(type: CooldownType, userId?: string, guildId?: string, channelId?: string): string {
     switch (type) {
       case CooldownType.USER:
         return userId || "unknown";
@@ -79,12 +77,11 @@ export class CooldownHandler {
     guildId?: string,
     channelId?: string
   ): Promise<{ onCooldown: boolean; remainingTime: number; options: CooldownOptions }> {
-
     if (!options?.enabled) {
       return {
         onCooldown: false,
         remainingTime: 0,
-        options: options || {} as CooldownOptions
+        options: options || ({} as CooldownOptions)
       };
     }
 
@@ -128,14 +125,7 @@ export class CooldownHandler {
   /**
    * Set cooldown for command (database-only)
    */
-  public async setCooldown(
-    commandName: string,
-    options: CooldownOptions,
-    userId: string,
-    guildId?: string,
-    channelId?: string
-  ): Promise<void> {
-
+  public async setCooldown(commandName: string, options: CooldownOptions, userId: string, guildId?: string, channelId?: string): Promise<void> {
     if (!options.enabled) return;
 
     const targetId = this.getTargetId(options.type, userId, guildId, channelId);
@@ -160,14 +150,7 @@ export class CooldownHandler {
   /**
    * Reset specific cooldown (database-only)
    */
-  public async resetCooldown(
-    commandName: string,
-    options: CooldownOptions,
-    userId: string,
-    guildId?: string,
-    channelId?: string
-  ): Promise<void> {
-
+  public async resetCooldown(commandName: string, options: CooldownOptions, userId: string, guildId?: string, channelId?: string): Promise<void> {
     const targetId = this.getTargetId(options.type, userId, guildId, channelId);
     const key = this.createKey(commandName, options.type, targetId);
 
@@ -199,11 +182,7 @@ export class CooldownHandler {
   /**
    * Get remaining cooldown time (database-only)
    */
-  public async getRemainingTime(
-    commandName: string,
-    type: CooldownType,
-    targetId: string
-  ): Promise<number> {
+  public async getRemainingTime(commandName: string, type: CooldownType, targetId: string): Promise<number> {
     try {
       const key = this.createKey(commandName, type, targetId);
       const cooldown = await CooldownModel.findOne({ cooldownId: key });

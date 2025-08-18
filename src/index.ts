@@ -11,8 +11,8 @@ console.error = (...args) => clog(`${chalk.red("[ERROR]")} ${formatText()}`, ...
 
 const BOT_TOKEN = process.env.DISCORD_TOKEN;
 if (!BOT_TOKEN) {
-    console.error("DISCORD_TOKEN is not defined in your environment variables.");
-    process.exit(1);
+  console.error("DISCORD_TOKEN is not defined in your environment variables.");
+  process.exit(1);
 }
 
 new Client(BOT_TOKEN, Bot.intents, Bot.partials);

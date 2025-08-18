@@ -19,12 +19,12 @@ export class LocaleHandler {
 
   private localeNames: Partial<{ [key in AllowedLocale]: string }> = {
     "en-US": "English",
-    "tr": "Türkçe",
+    tr: "Türkçe"
   };
 
   private localeFlags: Partial<{ [key in AllowedLocale]: string }> = {
     "en-US": "🇺🇸",
-    "tr": "🇹🇷",
+    tr: "🇹🇷"
   };
 
   constructor(
@@ -137,7 +137,7 @@ export class LocaleHandler {
       where: { guildId }
     });
 
-    const guildLang = (guildValue?.language || guild?.preferredLocale && guild.features.includes("COMMUNITY")) as AllowedLocale;
+    const guildLang = (guildValue?.language || (guild?.preferredLocale && guild.features.includes("COMMUNITY"))) as AllowedLocale;
     if (this.config.allowedLocales.includes(guildLang)) {
       return guildLang;
     }

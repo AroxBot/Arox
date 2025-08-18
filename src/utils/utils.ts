@@ -1,4 +1,3 @@
-
 export function flatten(obj: Record<string, any>, prefix = ""): Record<string, any> {
   return Object.keys(obj).reduce(
     (acc: Record<string, any>, k) => {
@@ -56,7 +55,6 @@ export function formatBytes(bytes: number, decimals = 2): string {
   return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i];
 }
 
-
 export function getRandomElements<T>(arr: T[], count: number): T[] {
   if (count > arr.length) {
     throw new Error("İstenilen eleman sayısı, dizinin uzunluğundan fazla olamaz.");
@@ -72,5 +70,5 @@ export function getRandomElements<T>(arr: T[], count: number): T[] {
 }
 
 export function capitalizeWordsRegex(sentence: string): string {
-  return sentence.replace(/\b\p{L}/gu, char => char.toLocaleUpperCase("tr-TR"));
+  return sentence.replace(/\b\p{L}/gu, (char) => char.toLocaleUpperCase("tr-TR"));
 }
