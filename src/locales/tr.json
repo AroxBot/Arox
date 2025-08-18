@@ -150,8 +150,8 @@
 					"noCash": "Yatırmak için hiç nakitin yok.",
 					"noBank": "Çekmek için bankada hiç paran yok.",
 					"invalidAmount": "Lütfen geçerli bir miktar girin.",
-					"notEnoughCash": "Cüzdanında yeterli para yok. Cüzdanındaki para: **{{{amount}}}** 💵",
-					"notEnoughBank": "Bankanda yeterli para yok. Bankandaki para: **{{{amount}}}** 💵"
+					"notEnoughCash": "Bu işlemi gerçekleştirebilmek için cüzdanında yeterli [[cash]] **{{{currency}}}** yok. ",
+					"notEnoughBank": "Bu işlemi gerçekleştirebilmek için bankanda yeterli [[cash]] **{{{currency}}}** yok."
 				}
 			},
 			"components": {
@@ -251,7 +251,8 @@
 				"spin": "Sayı seçiliyor...",
 				"result": "Sonuç **{{{result}}}** geldi ve",
 				"win": "[[cash]] **{{{amount}}}** kazandın!",
-				"lose": "**kaybettin...**"
+				"lose": "**kaybettin...**",
+				"timeout": "commands.guessnumber.messages.timeout"
 			}
 		},
 		"roulette": {

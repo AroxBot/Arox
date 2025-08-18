@@ -37,19 +37,16 @@ export default Handler.SlashCommandHandler({
         const buttons = new ActionRowBuilder<ButtonBuilder>().addComponents(
             new ButtonBuilder()
                 .setCustomId("guessnumber_1")
-             //   .setEmoji(options._e("gn1"))
-                .setStyle(ButtonStyle.Secondary)
-                .setLabel("1"),
+                .setEmoji(options._e("gn1"))
+                .setStyle(ButtonStyle.Secondary),
             new ButtonBuilder()
                 .setCustomId("guessnumber_2")
-              //  .setEmoji(options._e("gn2"))
-                .setStyle(ButtonStyle.Secondary)
-                .setLabel("2"),
+                .setEmoji(options._e("gn2"))
+                .setStyle(ButtonStyle.Secondary),
             new ButtonBuilder()
                 .setCustomId("guessnumber_3")
-                //.setEmoji(options._e("gn3"))
+                .setEmoji(options._e("gn3"))
                 .setStyle(ButtonStyle.Secondary)
-                .setLabel("3")
         );
 
         const message = await interaction.reply({
@@ -108,14 +105,29 @@ export default Handler.SlashCommandHandler({
                     content: resultMessage,
                     components: [],
                 }).catch(() => { /* Ignore errors */ });
-            }, 1500);
+            }, 3000);
         });
 
         collector.on("end", async (collected) => {
-            if (collected.size === 0) {
-                const timeoutContainer = new ContainerBuilder().addTextDisplayComponents(d => d.setContent(options._t("commands.guessnumber.messages.timeout")));
-                await interaction.editReply({ components: [timeoutContainer], flags: MessageFlags.IsComponentsV2 });
-            }
+            if (collected.size !== 0) return;
+            const disabledButtons = new ActionRowBuilder<ButtonBuilder>();
+            disabledButtons.addComponents(
+                new ButtonBuilder()
+                    .setCustomId("guessnumber_1")
+                    .setEmoji(options._e("gn1"))
+                    .setStyle(ButtonStyle.Secondary)
+                    .setDisabled(true),
+                new ButtonBuilder()
+                    .setCustomId("guessnumber_2")
+                    .setEmoji(options._e("gn2"))
+                    .setStyle(ButtonStyle.Secondary)
+                    .setDisabled(true),
+                new ButtonBuilder()
+                    .setCustomId("guessnumber_3")
+                    .setEmoji(options._e("gn3"))
+                    .setStyle(ButtonStyle.Secondary)
+                    .setDisabled(true)
+            );
         });
     },
 });
