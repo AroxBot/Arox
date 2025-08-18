@@ -219,11 +219,6 @@
 					}
 				}
 			},
-			"components": {
-				"buttons": {
-					"select": "Seç"
-				}
-			},
 			"messages": {
 				"bet": "{{{emoji}}} | **{{{name}}}**, Yazı Tura oyununa [[cash]] **{{{amount}}}** yatırdın",
 				"select": "Lütfen aşağıdan seçimini yap!",
@@ -233,6 +228,30 @@
 				"win": "[[cash]] **{{{amount}}}** kazandın!",
 				"lose": "**kaybettin...**",
 				"timeout": "commands.coinflip.messages.timeout"
+			}
+		},
+		"guessnumber": {
+			"name": "sayıtahmin",
+			"description": "Sayı tahmin oynayarak para kazanın veya kaybedin.",
+			"options": {
+				"amount": {
+					"name": "miktar",
+					"description": "Yatırmak istediğiniz miktar."
+				},
+				"choice": {
+					"choices": {
+						"1": "commands.guessnumber.options.choice.choices.1"
+					}
+				}
+			},
+			"messages": {
+				"bet": "{{{emoji}}} | **{{{name}}}**, Sayı tahmin oyununa [[cash]] **{{{amount}}}** yatırdın",
+				"select": "Lütfen aşağıdan bir sayı seç!",
+				"selected": "ve **{{{choice}}}** sayısını seçtin!",
+				"spin": "Sayı seçiliyor...",
+				"result": "Sonuç **{{{result}}}** geldi ve",
+				"win": "[[cash]] **{{{amount}}}** kazandın!",
+				"lose": "**kaybettin...**"
 			}
 		},
 		"roulette": {

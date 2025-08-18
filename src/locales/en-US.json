@@ -1,0 +1,98 @@
+{
+	"commands": {
+		"balance": {
+			"name": "commands.balance.name",
+			"description": "commands.balance.description"
+		},
+		"status": {
+			"name": "commands.status.name",
+			"description": "commands.status.description"
+		},
+		"bank": {
+			"name": "commands.bank.name",
+			"description": "commands.bank.description"
+		},
+		"daily": {
+			"name": "commands.daily.name",
+			"description": "commands.daily.description"
+		},
+		"exchange": {
+			"name": "commands.exchange.name",
+			"description": "commands.exchange.description"
+		},
+		"leaderboard": {
+			"name": "commands.leaderboard.name",
+			"description": "commands.leaderboard.description"
+		},
+		"transfer": {
+			"name": "commands.transfer.name",
+			"description": "commands.transfer.description",
+			"options": {
+				"user": {
+					"name": "commands.transfer.options.user.name",
+					"description": "commands.transfer.options.user.description"
+				},
+				"amount": {
+					"name": "commands.transfer.options.amount.name",
+					"description": "commands.transfer.options.amount.description"
+				}
+			}
+		},
+		"pray": {
+			"name": "commands.pray.name",
+			"description": "commands.pray.description"
+		},
+		"coinflip": {
+			"name": "commands.coinflip.name",
+			"description": "commands.coinflip.description",
+			"options": {
+				"amount": {
+					"name": "commands.coinflip.options.amount.name",
+					"description": "commands.coinflip.options.amount.description"
+				}
+			}
+		},
+		"guessnumber": {
+			"name": "commands.guessnumber.name",
+			"description": "commands.guessnumber.description",
+			"options": {
+				"amount": {
+					"name": "commands.guessnumber.options.amount.name",
+					"description": "commands.guessnumber.options.amount.description"
+				}
+			}
+		},
+		"roulette": {
+			"name": "commands.roulette.name",
+			"description": "commands.roulette.description",
+			"options": {
+				"amount": {
+					"name": "commands.roulette.options.amount.name",
+					"description": "commands.roulette.options.amount.description"
+				}
+			}
+		},
+		"calculate": {
+			"name": "commands.calculate.name",
+			"description": "commands.calculate.description",
+			"options": {
+				"expression": {
+					"name": "commands.calculate.options.expression.name",
+					"description": "commands.calculate.options.expression.description"
+				}
+			}
+		},
+		"invite": {
+			"name": "commands.invite.name",
+			"description": "commands.invite.description"
+		},
+		"language": {
+			"name": "commands.language.name",
+			"description": "commands.language.description"
+		},
+		"ping": {
+			"name": "commands.ping.name",
+			"description": "commands.ping.description"
+		}
+	}
+}

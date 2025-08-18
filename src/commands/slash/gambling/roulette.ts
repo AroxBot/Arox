@@ -28,9 +28,6 @@ export default Handler.SlashCommandHandler({
             return await throwError(interaction, options, options._t("commands.roulette.messages.not_enough_money"));
         }
 
-        user.cash -= amount;
-        await user.save();
-
         const content = `${options._t("commands.roulette.messages.bet", {
             emoji: options._e("roulette"),
             name: interaction.user.displayName,
@@ -69,9 +66,11 @@ export default Handler.SlashCommandHandler({
             const won = result === choice;
 
             if (won) {
-                user.cash += amount * colors.length;
-                await user.save();
+                user.cash += amount * colors.length - 1;
+            } else {
+                user.cash -= amount;
             }
+             await user.save();
 
             let resultMessage = `${options._t("commands.roulette.messages.bet", {
                 name: interaction.user.displayName,
@@ -112,9 +111,6 @@ export default Handler.SlashCommandHandler({
 
         collector.on("end", async (collected) => {
             if (collected.size > 0) return;
-
-            user.cash += amount;
-            await user.save();
 
             const disabledButtons = new ActionRowBuilder<ButtonBuilder>();
             selectedColors.forEach((color: string) => {
