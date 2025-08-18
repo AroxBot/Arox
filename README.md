@@ -18,7 +18,7 @@ SHARD_COUNT=auto
 
 ## License
 
-**Arox** is licensed under the terms of [GNU General Public License v3.0](https://github.com/AroxBot/arox/blob/master/LICENSE).
+**Arox** is licensed under the terms of [GNU General Public License v3.0](https://github.com/AroxBot/arox/blob/main/LICENSE).
 
 ## Contributing
 
