@@ -28,11 +28,10 @@ export default Handler.CommandHandler({
     const color = args[4];
     const channelId = args[5];
     const emoji = args[6];
-    const highLimit = parseInt(args[7]) || cost * 2; // Default: 2x launch cost
-    const lowLimit = parseInt(args[8]) || Math.floor(cost * 0.1); // Default: 10% of launch cost
+    const highLimit = parseInt(args[7]) || cost * 2;
+    const lowLimit = parseInt(args[8]) || Math.floor(cost * 0.1);
     const chartURL = args[9] || null;
 
-    // Validate inputs
     if (isNaN(cost) || cost < 1 || cost > 1000000) {
       return await message.reply({
         content: "❌ **| " + message.author.displayName + "**, Cost must be a number between 1 and 1,000,000!"
@@ -57,7 +56,6 @@ export default Handler.CommandHandler({
       });
     }
 
-    // Check if coin already exists
     const existingCoin = await CoinModel.findOne({
       $or: [{ id }, { name }]
     });
@@ -69,7 +67,6 @@ export default Handler.CommandHandler({
     }
 
     try {
-      // Create new coin
       const newCoin = new CoinModel({
         id,
         name,
@@ -90,30 +87,24 @@ export default Handler.CommandHandler({
 
       await newCoin.save();
 
-      // Add emoji to emojis.json
       try {
         const emojiPath = path.join(process.cwd(), "src", "emojis.json");
         const emojisData = JSON.parse(readFileSync(emojiPath, "utf-8"));
 
-        // Add to coins section
         if (!emojisData.coins) {
           emojisData.coins = {};
         }
         emojisData.coins[id] = emoji;
 
-        // Also add to main emojis
         emojisData[name] = emoji;
 
-        // Write back to file
         writeFileSync(emojiPath, JSON.stringify(emojisData, null, 4), "utf-8");
 
         console.log(`✅ Added emoji ${emoji} for coin ${id} to emojis.json`);
       } catch (emojiError) {
         console.error("❌ Error adding emoji to emojis.json:", emojiError);
-        // Continue with coin creation even if emoji addition fails
       }
 
-      // Add coin to exchange loop
       await exchangeLoop.addCoin(id);
 
       const embed = new EmbedBuilder()

@@ -376,6 +376,94 @@
 				"set": "commands.setcash.messages.set",
 				"change": "commands.setcash.messages.change"
 			}
+		},
+		"backgrounds": {
+			"name": "arkaplanlar",
+			"description": "Sahip olduğun duvar kağıtlarını görüntüle ve kullan.",
+			"messages": {
+				"title": "Arkaplanlar",
+				"footer": "Sayfa {{page}}/{{total}}",
+				"status": {
+					"owned": "Sahipsin",
+					"using": "Kullanılıyor",
+					"notOwned": "Sahip değilsin"
+				},
+				"error": {
+					"no_backgrounds": "Henüz hiçbir arkaplan ürünü eklenmemiş!",
+					"not_owned": "Bu arkaplana sahip değilsin.",
+					"already_using": "Zaten bu arkaplanı kullanıyorsun."
+				},
+				"success": {
+					"used": "Arkaplanın başarıyla güncellendi! (ID: {{id}})"
+				}
+			},
+			"components": {
+				"buttons": {
+					"prev": "Geri",
+					"use": "Kullan",
+					"next": "İleri"
+				}
+			}
+		},
+		"market": {
+			"author": {
+				"wallpaper": "Arkaplanlar"
+			},
+			"desc": {
+				"backgrounds": "Sahip olduğun arkaplanlarını görüntüleyebilir veya kullanabilirsin."
+			},
+			"name": "market",
+			"description": "Ürün mağazasını aç.",
+			"components": {
+				"select": {
+					"placeholder": "Kategori seç"
+				},
+				"buttons": {
+					"buy": "Satın Al",
+					"prev": "Geri",
+					"next": "İleri",
+					"back_types": "Kategorilere Dön"
+				}
+			},
+			"messages": {
+				"title": "Mağaza",
+				"pick_type": "Menüden bir kategori seç.",
+				"empty_type": "Bu kategoriye ait ürün yok.",
+				"error": {
+					"no_type": "Önce bir kategori seçmelisin.",
+					"product_missing": "Ürün bulunamadı.",
+					"already_owned": "Bu ürüne zaten sahipsin."
+				},
+				"success": {
+					"bought": "Satın alındı: "
+				},
+				"section": {
+					"header": "Ürünler",
+					"page": "Sayfa",
+					"price": "Fiyat"
+				}
+			}
+		}
+	},
+	"products": {
+		"types": {
+			"wallpaper": {
+				"label": "Duvar Kağıtları",
+				"description": "Profil arkaplanı ürünleri"
+			}
+		},
+		"names": {
+			"wallpaper_100": "Default Wallpaper",
+			"wallpaper_101": "Wallpaper #1",
+			"wallpaper_102": "Wallpaper #2",
+			"wallpaper_103": "Wallpaper #3",
+			"wallpaper_104": "Wallpaper #4",
+			"wallpaper_105": "Wallpaper #5",
+			"wallpaper_106": "Wallpaper #6",
+			"wallpaper_107": "Wallpaper #7",
+			"wallpaper_108": "Wallpaper #8",
+			"wallpaper_109": "Wallpaper #9",
+			"wallpaper_110": "Wallpaper #10"
 		}
 	}
 }

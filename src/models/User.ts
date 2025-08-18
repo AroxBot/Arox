@@ -18,6 +18,8 @@ export interface IUser extends Document {
   transactions: ITransaction[];
   rulesAccepted: boolean;
   coins: Map<string, number>;
+  selectedBackgroundId?: number | null;
+  backgroundsOwned: number[];
 }
 
 const UserSchema = new Schema<IUser>(
@@ -39,7 +41,9 @@ const UserSchema = new Schema<IUser>(
       default: []
     },
     rulesAccepted: { type: Boolean, default: false },
-    coins: { type: Map, of: Number, default: new Map() }
+    coins: { type: Map, of: Number, default: new Map() },
+    selectedBackgroundId: { type: Number, default: null },
+    backgroundsOwned: { type: [Number], default: [] }
   },
   { timestamps: true }
 );

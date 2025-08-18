@@ -21,7 +21,6 @@ export default Handler.CommandHandler({
     const coinId = args[0].toUpperCase();
 
     try {
-      // Find the coin
       const coin = await CoinModel.findOne({ id: coinId });
 
       if (!coin) {
@@ -30,10 +29,8 @@ export default Handler.CommandHandler({
         });
       }
 
-      // Remove from exchange loop first
       exchangeLoop.removeCoin(coinId);
 
-      // Delete messages from channel if they exist
       if (coin.channel) {
         try {
           const channel = await message.client.channels.fetch(coin.channel);
@@ -52,7 +49,6 @@ export default Handler.CommandHandler({
         }
       }
 
-      // Store coin info for confirmation message
       const coinInfo = {
         id: coin.id,
         name: coin.name,
@@ -60,7 +56,6 @@ export default Handler.CommandHandler({
         color: coin.bcolor
       };
 
-      // Delete from database
       await CoinModel.findOneAndDelete({ id: coinId });
 
       const embed = new EmbedBuilder()

@@ -41,7 +41,6 @@ export class LocaleHandler {
       defaultLocale: this.config.defaultLocale,
       objectNotation: true,
       autoReload: true
-      //  retryInDefaultLocale: false,
     });
     this.i18n.setLocale(this.config.defaultLocale);
   }

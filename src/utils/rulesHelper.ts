@@ -61,13 +61,10 @@ export async function handleRulesAccept(options: DefaultCommandOptions, interact
 
   const embed = new CustomEmbed(options, interaction).successEmbed().setDescription(options._t("rules.accepted"));
 
-  // To prevent "Unknown interaction" error, we ensure the original message is not ephemeral
-  // and the update is done correctly.
   try {
     await interaction.update({ embeds: [embed], components: [] });
   } catch (error) {
     console.error("Failed to update rules acceptance interaction:", error);
-    // As a fallback, send a new ephemeral message
     await interaction.followUp({ embeds: [embed], ephemeral: true });
   }
 }

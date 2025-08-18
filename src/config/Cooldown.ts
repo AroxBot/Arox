@@ -8,5 +8,5 @@ export default {
   enabled: true,
   type: CooldownType.USER,
   saveDatabase: true,
-  invalidSession: ms("30d") //30 gün
+  invalidSession: ms("30d")
 } as CooldownSettings;

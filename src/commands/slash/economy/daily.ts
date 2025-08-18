@@ -6,7 +6,7 @@ import UserModel from "../../../models/User";
 function getMillisecondsUntilMidnight() {
   const now = new Date();
   const midnight = new Date(now);
-  midnight.setHours(24, 0, 0, 0); // Set to the next day's midnight
+  midnight.setHours(24, 0, 0, 0);
   return midnight.getTime() - now.getTime();
 }
 

@@ -17,7 +17,6 @@ export class CooldownBuilder {
   }
 
   setCooldownTime(time: number) {
-    // If time is 0, disable cooldown
     if (time === 0) {
       this.options.enabled = false;
       this.options.cooldownTime = 0;
@@ -29,7 +28,7 @@ export class CooldownBuilder {
     }
 
     this.options.cooldownTime = time;
-    this.options.enabled = true; // Ensure enabled when setting a time > 0
+    this.options.enabled = true;
     return this;
   }
 

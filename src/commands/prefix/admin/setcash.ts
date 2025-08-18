@@ -54,7 +54,6 @@ export default Handler.CommandHandler({
 
     const amountText = (operation !== "set" ? Math.abs(newCash - oldCash) : newCash).toLocaleString();
 
-    // Create operation messages
     const messages = {
       author: `User ${targetUser.username}'s Arox Cash amount has been updated.`,
       set: `User ${targetUser.username}'s ${options._e("cash")} amount has been **set to ${amountText}**.`,

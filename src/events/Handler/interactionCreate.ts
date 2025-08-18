@@ -9,13 +9,11 @@ export default Handler.EventHandler({
   name: Events.InteractionCreate,
   once: false,
   async handle(options, interaction) {
-    // Handle non-command interactions first
     if (interaction.isButton() && interaction.customId === "accept_rules") {
       const opts = { ...options, locale: options.bot.localeHandler.defaultLocale, _t: (key: string) => key, _e: () => "❓", _c: () => null };
       return await handleRulesAccept(opts, interaction);
     }
 
-    // Only handle command interactions from here
     if (!interaction.isCommand() && !interaction.isContextMenuCommand()) {
       return;
     }
@@ -29,7 +27,6 @@ export default Handler.EventHandler({
       _t: options.bot.localeHandler._t.bind(options.bot.localeHandler, locale)
     };
 
-    // Get the command first to check if it exists
     const command = interaction.isChatInputCommand()
       ? options.bot.commandHandler.slashCommand.get(interaction.commandName)
       : options.bot.commandHandler.contextMenu.find((cmd) => cmd.data.name === interaction.commandName && cmd.data.type === interaction.commandType);
@@ -43,8 +40,6 @@ export default Handler.EventHandler({
       }
       return;
     }
-
-    // Perform checks
     const rulesCheck = await checkRules(opts, interaction);
     if (!rulesCheck.canProceed) {
       return;
@@ -58,7 +53,6 @@ export default Handler.EventHandler({
       return await throwError(interaction, opts, opts._t("error", "noAccess", "dm"));
     }
 
-    // Cooldown check
     if (command.cooldown && command.cooldown.enabled) {
       try {
         const cooldownCheck = await options.bot.cooldownHandler.checkCooldown(
@@ -88,15 +82,12 @@ export default Handler.EventHandler({
         }
       } catch (cooldownError) {
         console.error(`Error checking cooldown for command '${interaction.commandName}':`, cooldownError);
-        // Continue execution if cooldown check fails
       }
     }
 
-    // Execute command
     try {
       await command.execute(opts, interaction as any);
 
-      // Set cooldown after successful execution
       if (command.cooldown && command.cooldown.enabled) {
         try {
           await options.bot.cooldownHandler.setCooldown(
@@ -108,7 +99,6 @@ export default Handler.EventHandler({
           );
         } catch (cooldownError) {
           console.error(`Error setting cooldown for command '${interaction.commandName}':`, cooldownError);
-          // Don't block command execution if cooldown setting fails
         }
       }
     } catch (err) {

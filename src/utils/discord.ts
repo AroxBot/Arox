@@ -78,7 +78,7 @@ export async function throwError(
 
   if (deleteIn && sentMessage instanceof Message) {
     setTimeout(() => {
-      sentMessage.delete().catch(() => {}); // Ignore errors
+      sentMessage.delete().catch(() => {});
     }, deleteIn);
   }
 }

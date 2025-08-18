@@ -37,12 +37,11 @@ export class ExchangeLoop {
 
   private startCoinLoop(coin: any) {
     const setRandomInterval = () => {
-      // Random interval between 10-360 seconds (like AroxV2)
       const randomDelay = (Math.floor(Math.random() * (360 - 10 + 1)) + 10) * 1000;
 
       const timeout = setTimeout(async () => {
         await this.updateCoin(coin);
-        setRandomInterval(); // Schedule next update
+        setRandomInterval();
       }, randomDelay);
 
       this.coinIntervals.set(coin.id, timeout);
@@ -58,7 +57,6 @@ export class ExchangeLoop {
       const minutes = now.getMinutes();
       const currentTime = `${hours}:${minutes < 10 ? "0" + minutes : minutes}`;
 
-      // Get channel
       const channelID = coin.channel;
       if (!channelID) {
         console.error(`❌ No channel set for coin ${coin.id}`);
@@ -71,7 +69,6 @@ export class ExchangeLoop {
         return;
       }
 
-      // Price change calculation (0.00% to 5.00%)
       const min = 0.0;
       const max = 5.0;
       let perc = Math.random() * (max - min) + min;
@@ -83,16 +80,12 @@ export class ExchangeLoop {
       const highLimit = coin.highLimit || 100000;
       const lowLimit = coin.lowLimit || 100;
 
-      // Improved limit logic - more flexible
       let direction: "+" | "-";
       if (cost > highLimit) {
-        // Force downward when above high limit
         direction = "-";
       } else if (cost < lowLimit) {
-        // Force upward when below low limit
         direction = "+";
       } else {
-        // Normal random direction
         direction = ["+", "-"][Math.floor(Math.random() * 2)] as "+" | "-";
       }
 
@@ -100,25 +93,20 @@ export class ExchangeLoop {
       let newCost = direction === "+" ? cost + changeAmount : cost - changeAmount;
       newCost = Math.floor(newCost);
 
-      // Ensure minimum cost of 1
       if (newCost < 1) newCost = 1;
 
-      // Update coin data
       coin.cost = newCost;
 
-      // Update lastValues array (keep last 20)
       const lastValues = coin.lastValues || [];
       if (lastValues.length >= 20) lastValues.shift();
       lastValues.push(oldCost);
       coin.lastValues = lastValues;
 
-      // Update lastDates array (keep last 20)
       const lastDates = coin.lastDates || [];
       if (lastDates.length >= 20) lastDates.shift();
       lastDates.push(currentTime);
       coin.lastDates = lastDates;
 
-      // Update highest/lowest values
       let isNewHigh = false;
       let isNewLow = false;
 
@@ -131,15 +119,12 @@ export class ExchangeLoop {
         isNewLow = true;
       }
 
-      // Generate chart using QuickChart API
       const chartUrl = await this.generateChart(coin.name, lastDates, lastValues, coin.bcolor);
       coin.chart = chartUrl;
 
-      // Update percentage display
       const emoji = direction === "+" ? "📈" : "📉";
       coin.percentage = `${emoji} ${direction}${perc.toFixed(2).replace(".", ",")}%`;
 
-      // Create embed like AroxV2
       const embed = new EmbedBuilder()
         .setColor(coin.bcolor)
         .setAuthor({
@@ -157,7 +142,6 @@ export class ExchangeLoop {
         )
         .setImage(chartUrl);
 
-      // Create content message
       let content: string;
       if (isNewLow) {
         content = `📉 **| ${coin.name.toUpperCase()}** was updated. Lowest price reached so far!`;
@@ -170,7 +154,6 @@ export class ExchangeLoop {
 
       await coin.save();
 
-      // Update messages in channel
       await this.updateMessage(channel, embed, coin);
       await this.updateAnnouncement(channel, content, coin);
 
@@ -291,13 +274,10 @@ export class ExchangeLoop {
   }
 
   private extractEmojiId(coinName: string): string {
-    // This would extract emoji ID from the coin emoji
-    // For now, return empty string if no custom emoji system
     return "";
   }
 
   private getCoinEmoji(coinName: string): string {
-    // Return appropriate emoji from emojis.json coins section
     return (emojis as any).coins[coinName.toUpperCase()] || "🪙";
   }
 
@@ -308,7 +288,6 @@ export class ExchangeLoop {
     };
   }
 
-  // Add new coin to the loop
   async addCoin(coinId: string) {
     if (!this.isRunning) return;
 
@@ -319,7 +298,6 @@ export class ExchangeLoop {
     }
   }
 
-  // Remove coin from the loop
   removeCoin(coinId: string) {
     const interval = this.coinIntervals.get(coinId);
     if (interval) {
@@ -329,7 +307,6 @@ export class ExchangeLoop {
     }
   }
 
-  // Manually refresh a specific coin
   async refreshCoin(coinId: string): Promise<boolean> {
     try {
       const coin = await CoinModel.findOne({ id: coinId });

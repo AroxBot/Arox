@@ -93,6 +93,80 @@
 		"ping": {
 			"name": "commands.ping.name",
 			"description": "commands.ping.description"
+		},
+		"backgrounds": {
+			"name": "backgrounds",
+			"description": "View and use your owned wallpapers.",
+			"messages": {
+				"title": "Backgrounds",
+				"footer": "Page {{page}}/{{total}}",
+				"status": {
+					"owned": "Owned",
+					"using": "In use",
+					"notOwned": "Not owned"
+				},
+				"error": {
+					"no_backgrounds": "No wallpaper products have been added yet!",
+					"not_owned": "You don't own this wallpaper.",
+					"already_using": "You're already using this wallpaper."
+				},
+				"success": {
+					"used": "Background updated successfully! (ID: {{id}})"
+				}
+			},
+			"components": {
+				"buttons": {
+					"prev": "Previous",
+					"use": "Use",
+					"next": "Next"
+				}
+			}
+		},
+		"market": {
+			"name": "market",
+			"description": "Open the product market.",
+			"components": {
+				"select": {
+					"placeholder": "Select a category"
+				},
+				"buttons": {
+					"buy": "Buy",
+					"prev": "Prev",
+					"next": "Next",
+					"back_types": "Back to Categories"
+				}
+			},
+			"messages": {
+				"title": "Market",
+				"pick_type": "Choose a category from the menu.",
+				"empty_type": "No products found for this type.",
+				"error": {
+					"no_type": "Please select a category first.",
+					"product_missing": "Product not found.",
+					"already_owned": "You already own this item."
+				},
+				"success": {
+					"bought": "Purchased: "
+				},
+				"section": {
+					"header": "Products",
+					"page": "Page",
+					"price": "Price"
+				}
+			}
+		}
+	},
+	"products": {
+		"types": {
+			"wallpaper": {
+				"label": "Wallpapers",
+				"description": "Profile background items"
+			}
+		},
+		"names": {
+			"wallpaper_100": "Classic Landscape (100)",
+			"wallpaper_105": "Night City (105)",
+			"wallpaper_110": "Pink Clouds (110)"
 		}
 	}
 }

@@ -20,7 +20,6 @@ export default Handler.CommandHandler({
     const coinId = args[0].toUpperCase();
 
     try {
-      // Check if coin exists
       const coin = await CoinModel.findOne({ id: coinId });
 
       if (!coin) {
@@ -29,7 +28,6 @@ export default Handler.CommandHandler({
         });
       }
 
-      // Trigger manual refresh through exchangeLoop
       const success = await exchangeLoop.refreshCoin(coinId);
 
       if (success) {

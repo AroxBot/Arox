@@ -122,7 +122,6 @@ async function balanceLogic(
         await response.edit({ components: [disabledRow] });
       } catch (error: any) {
         if (error.code !== 10008) {
-          // Unknown Message
           console.error("Error while disabling components:", error);
         }
       }

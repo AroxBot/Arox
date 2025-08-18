@@ -28,7 +28,6 @@ export class EmojiHandler {
   }
 
   _e(name: EmojiName | string, key?: string | "url"): string {
-    // If key is provided, treat name as parent object and key as sub-property
     if (key && key !== "url") {
       const parentObject = this.emojiList[name] as any;
       if (parentObject && typeof parentObject === "object" && parentObject[key]) {
@@ -37,10 +36,9 @@ export class EmojiHandler {
         if (!parsedEmoji || !parsedEmoji.id) return emoji;
         return emoji;
       }
-      return "🪙"; // Default coin emoji if not found
+      return "🪙";
     }
 
-    // Original behavior for single parameter or URL request
     const emoji = this.emojiList[name];
     if (!emoji) return "❓";
 

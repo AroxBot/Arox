@@ -30,7 +30,6 @@ export class CooldownHandler {
    * Start automatic database cleanup every 30 minutes
    */
   private startDatabaseCleanup(): void {
-    // Clean up database every 30 minutes
     this.databaseCleanupInterval = setInterval(
       () => {
         this.removeInvalidCooldowns();
@@ -38,7 +37,6 @@ export class CooldownHandler {
       30 * 60 * 1000
     );
 
-    // Run initial cleanup
     this.removeInvalidCooldowns();
   }
 
@@ -90,7 +88,6 @@ export class CooldownHandler {
     const now = Date.now();
 
     try {
-      // Check database directly
       const cooldown = await CooldownModel.findOne({ cooldownId: key });
 
       if (cooldown && cooldown.expiresDate > now) {
@@ -101,7 +98,6 @@ export class CooldownHandler {
         };
       }
 
-      // Remove expired cooldown if found
       if (cooldown && cooldown.expiresDate <= now) {
         await CooldownModel.deleteOne({ cooldownId: key });
       }
@@ -113,7 +109,6 @@ export class CooldownHandler {
       };
     } catch (error) {
       console.error("Error checking cooldown from database:", error);
-      // Return false on error to avoid blocking commands
       return {
         onCooldown: false,
         remainingTime: 0,
@@ -133,7 +128,6 @@ export class CooldownHandler {
     const expiresAt = Date.now() + options.cooldownTime;
 
     try {
-      // Save directly to database
       await CooldownModel.findOneAndUpdate(
         { cooldownId: key },
         {

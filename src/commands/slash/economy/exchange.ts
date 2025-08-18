@@ -44,15 +44,14 @@ export default Handler.SlashCommandHandler({
       components: [row]
     });
 
-    // Create collectors for interactions
     const selectCollector = message.createMessageComponentCollector({
       componentType: ComponentType.StringSelect,
-      time: 300000 // 5 minutes
+      time: 300000
     });
 
     const buttonCollector = message.createMessageComponentCollector({
       componentType: ComponentType.Button,
-      time: 300000 // 5 minutes
+      time: 300000
     });
 
     selectCollector.on("collect", async (selectInteraction: StringSelectMenuInteraction) => {
@@ -207,7 +206,7 @@ async function handleButtonInteraction(
   } else if (buttonInteraction.customId.startsWith("coin_")) {
     const split = buttonInteraction.customId.split("_");
     const coinId = split[2];
-    const action = split[1]; // 'al' or 'sat'
+    const action = split[1];
 
     const coin = await CoinModel.findOne({ id: coinId.toUpperCase() });
     if (!coin) return;
@@ -231,13 +230,10 @@ async function handleButtonInteraction(
 
     await buttonInteraction.showModal(modal);
 
-    // Handle modal submission
     try {
       const modalInteraction = await buttonInteraction.awaitModalSubmit({ time: 60000 });
       await handleModalSubmission(modalInteraction, options, coin, action);
-    } catch (error) {
-      // Modal timed out
-    }
+    } catch (error) {}
   }
 }
 
@@ -286,7 +282,6 @@ async function handleModalSubmission(modalInteraction: ModalSubmitInteraction, o
       })
     });
   } else if (action === "sat") {
-    // Sell coins
     if (userCoins < amount) {
       return await modalInteraction.reply({
         content: `${options._e("red")} **| ${modalInteraction.user.displayName}**, ${options._t("commands.exchange.messages.error.not_enough_coins")}`,
